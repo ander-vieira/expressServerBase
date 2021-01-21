@@ -47,4 +47,4 @@ The included web sites (HTML, CSS and client-side JS scripts) have been tested o
 
 ## License
 
-This work is provided under the MIT license, whose terms are as specified in the included LICENSE file.
+This work is provided under the MIT license, the terms of which are as specified in the included LICENSE file.
