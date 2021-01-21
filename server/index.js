@@ -1,4 +1,5 @@
 const express = require('express');
+const cron = require('node-cron');
 
 const app = express();
 
@@ -8,13 +9,22 @@ const httpPort = 3000;
 var frontPageHits = 0;
 
 /////////////////////////////////////
+//Cron jobs (periodic tasks)
+
+//Every day at 12 AM, clear the front page hit counter
+cron.schedule('0 0 * * *', () => {
+  console.log('Resetting front page hits...');
+  mainSiteHits = 0;
+});
+
+/////////////////////////////////////
 //Middleware
 
 //When the front page is requested, increase hit counter
 app.get('/', function(req, res, next) {
   frontPageHits++;
 
-  console.log('Front page hits so far: '+frontPageHits);
+  console.log('Front page hits today: '+frontPageHits);
 
   next();
 });
