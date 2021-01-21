@@ -1,0 +1,28 @@
+{
+  "name": "expressserverbase",
+  "version": "0.1.0",
+  "description": "A basic template for a web server based on Node.js and Express",
+  "main": "server/index.js",
+  "scripts": {
+    "start": "node server/index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ander-vieira/expressServerBase.git"
+  },
+  "keywords": [
+    "express",
+    "web",
+    "server"
+  ],
+  "author": "Ander Vieira",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ander-vieira/expressServerBase/issues"
+  },
+  "homepage": "https://github.com/ander-vieira/expressServerBase#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
