@@ -22,6 +22,10 @@ cron.schedule('0 0 * * *', () => {
 /////////////////////////////////////
 //Middleware
 
+//These will parse request payloads of the right types into the req.body field for use
+app.use(express.json()); // application/json
+app.use(express.text()); // text/plain
+
 //When the front page is requested, increase hit counter
 app.get('/', function(req, res, next) {
   frontPageHits++;
@@ -57,6 +61,12 @@ app.get('/user/:userId', (req, res) => {
 
   //Generate the HTML and send
   res.send(templates.generateUserPage(userId));
+});
+
+app.post('/form', (req, res) => {
+  res.setHeader('Content-Type', 'text/plain');
+
+  res.send(req.body);
 });
 
 /////////////////////////////////////
