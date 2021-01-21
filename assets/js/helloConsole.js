@@ -9,6 +9,28 @@ function docReady(fn) {
     }
 }
 
+//Send an AJAX request to an URL, with specified parameters
+function sendAjax(url, callback, method, contentType, content) {
+  if(!method) {
+    method = "GET"; //Default method
+  }
+
+  var httpRequest = new XMLHttpRequest();
+  //Set the callback function for after getting a response
+  httpRequest.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      callback(this.responseText);
+    }
+  };
+
+  //Set the request parameters and send content
+  httpRequest.open(method, url, true);
+  if(contentType) {
+    httpRequest.setRequestHeader('Content-Type', contentType);
+  }
+  httpRequest.send(content);
+}
+
 docReady(function() {
   console.log("Hello console!");
 });
@@ -24,20 +46,9 @@ docReady(function() {
       //Get the value input into the form
       dataName = dataForm.querySelector('input[type="text"]').value;
 
-      var httpRequest = new XMLHttpRequest();
-      //Set the callback function for after getting a response
-      httpRequest.onreadystatechange = function() {
-        if (this.readyState == 4 && this.status == 200) {
-          //If the target element exists, write the response into it
-          if(dataResult) {
-            dataResult.innerHTML = this.responseText;
-          }
-        }
-      };
-
-      //Set the request parameters and send form input (as plain text)
-      httpRequest.open("POST", "/form", true);
-      httpRequest.send(dataName);
+      sendAjax('/form', function(responseText) {
+        dataResult.innerHTML = responseText;
+      }, "POST", "text/plain", dataName);
 
       //Prevent the form from submitting normally and loading a new page
       e.preventDefault();
