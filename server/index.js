@@ -1,6 +1,8 @@
 const express = require('express');
 const cron = require('node-cron');
 
+const templates = require('./templates.js');
+
 const app = express();
 
 //The port number the server listens at (in local machine)
@@ -35,12 +37,30 @@ app.get('/', function(req, res, next) {
 // Example of an AJAX call / API hook
 // Return the front page hit counter so far, as a JSON object
 app.get('/ajax/hits', (req, res) => {
+  //Specify response type (optional)
   res.setHeader('Content-Type', 'application/json');
+
+  //Generate the JSON object and send
   res.end(JSON.stringify({ hits: frontPageHits }));
 });
 
 /////////////////////////////////////
-//Static website and assets
+//Dynamic/generated web pages
+
+//Example of a dynamically generated page for "users", with user id as part of the URL
+app.get('/user/:userId', (req, res) => {
+  //Extract named parameters from the URL
+  var userId = req.params['userId'];
+
+  //Specify response type (optional)
+  res.setHeader('Content-Type', 'text/html');
+
+  //Generate the HTML and send
+  res.send(templates.generateUserPage(userId));
+});
+
+/////////////////////////////////////
+//Static web pages and assets
 
 //Everything in public/ is accessible as-is
 app.use(express.static('public'));

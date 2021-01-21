@@ -24,6 +24,7 @@
   "homepage": "https://github.com/ander-vieira/expressServerBase#readme",
   "dependencies": {
     "express": "^4.17.1",
+    "handlebars": "^4.7.6",
     "node-cron": "^2.0.3"
   },
   "devDependencies": {
