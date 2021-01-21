@@ -40,11 +40,14 @@ The included web sites (HTML, CSS and client-side JS scripts) have been tested o
 - Adding custom middleware to add additional logic to some or all requests (example: a counter that counts front page hits)
 - AJAX calls / API hooks (for GET, POST and all other methods supported by HTTP), returning any kind of data (example: return the front page hits as a JSON object)
 - Cron jobs (server-side tasks to be executed periodically) (example: clear the front page hit counter every day at midnight)
+- Dynamic/generated web pages using Handlebars templates
 
 ## Not included (but possible) functions
 
 - Transpiling Typescript to Javascript. This can easily be added to the Gulp script used (gulpfile.js)
 - Conversion of graphics to the more optimal WebP format. Beware browser compatibility issues if you do, though.
+- Using middleware to change HTTP request params (for example, cache times)
+- Using a different templating engine (if you can find the appropriate NPM package and work it in)
 
 ## License
 
