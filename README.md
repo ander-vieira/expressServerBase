@@ -38,6 +38,7 @@ The included web sites (HTML, CSS and client-side JS scripts) have been tested o
 - Serving static files unmodified (ex. static HTML files)
 - Preprocessing of static assets (SASS to CSS, minifying JS).
 - Adding custom middleware to add additional logic to some or all requests (example: a counter that counts front page hits)
+- AJAX calls / API hooks (for GET, POST and all other methods supported by HTTP), returning any kind of data (example: return the front page hits as a JSON object)
 
 ## Not included (but possible) functions
 
