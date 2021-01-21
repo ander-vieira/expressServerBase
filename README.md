@@ -37,6 +37,7 @@ The included web sites (HTML, CSS and client-side JS scripts) have been tested o
 
 - Serving static files unmodified (ex. static HTML files)
 - Preprocessing of static assets (SASS to CSS, minifying JS).
+- Adding custom middleware to add additional logic to some or all requests (example: a counter that counts front page hits)
 
 ## Not included (but possible) functions
 
