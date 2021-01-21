@@ -48,6 +48,15 @@ app.get('/ajax/hits', (req, res) => {
   res.end(JSON.stringify({ hits: frontPageHits }));
 });
 
+//Example of a form submit handler (form submitted via AJAX)
+app.post('/form', (req, res) => {
+  //Response is sent as plaintext
+  res.setHeader('Content-Type', 'text/plain');
+
+  //Echo back the request (should also be in plaintext)
+  res.send(req.body);
+});
+
 /////////////////////////////////////
 //Dynamic/generated web pages
 
@@ -61,12 +70,6 @@ app.get('/user/:userId', (req, res) => {
 
   //Generate the HTML and send
   res.send(templates.generateUserPage(userId));
-});
-
-app.post('/form', (req, res) => {
-  res.setHeader('Content-Type', 'text/plain');
-
-  res.send(req.body);
 });
 
 /////////////////////////////////////
